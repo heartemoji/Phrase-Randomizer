@@ -22,7 +22,7 @@ int main(){
     cout << "2. Read from a file" << endl;
     cout << ">>:";
     
-    char selection;
+    int selection;
     cin >> selection;
 
     switch(selection){
@@ -52,10 +52,10 @@ void directInput(){
     while(getline(cin, line)){
         lines.push_back(line);
     }
+    
+    cout << endl;
 
-    random_shuffle(lines.begin(), lines.end());
-
-    cout << '\n';
+    random_shuffle(lines.begin() + 1, lines.end());
 
     for(string l : lines){
         cout << l << '\n';
