@@ -47,7 +47,7 @@ int main(){
     if(lines.empty())
         return 1;
 
-    random_shuffle(lines.begin() + 1, lines.end());
+    random_shuffle(lines.begin(), lines.end());
 
     for(string l : lines){
         cout << l << endl;
