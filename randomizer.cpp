@@ -6,7 +6,6 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <sstream>
 #include <fstream>
 
 using namespace std;
