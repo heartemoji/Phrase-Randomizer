@@ -14,7 +14,7 @@ using namespace std;
 
 vector<string> directInput();
 vector<string> fromFile();
-
+void save(vector<string> lines);
 
 int main(){
 
@@ -54,9 +54,16 @@ int main(){
         cout << l << endl;
     }
 
+    cout << endl;
+    string answer;
+    cout << "Would you like to save this result? (y/n): ";
+    cin >> answer;
     
-        
+    if(answer == "y")
+        save(lines);
+    
 
+    cout << "Have a nice day!" << endl;
 
     return 0;
 }
@@ -66,9 +73,9 @@ vector<string> directInput(){
 
     string line;
 
-    cout << "Enter some lines! (Ctrl-D to quit)" << endl;
+    cout << "Enter some lines! ('Q' when finished!)" << endl;
 
-    while(getline(cin, line)){
+    while(getline(cin, line) && line != "Q"){
         lines.push_back(line);
     }
     
@@ -85,7 +92,7 @@ vector<string> fromFile(){
     vector<string> lines;
     string line;
     
-    fstream infile(filePath, fstream::in);
+    ifstream infile(filePath);
 
     if(infile.fail()){
         cout << "File not found: " << filePath;
@@ -93,6 +100,7 @@ vector<string> fromFile(){
     }
 
     while(getline(infile, line)){
+        cout << line << endl;
         lines.push_back(line);
     }
     
@@ -100,4 +108,19 @@ vector<string> fromFile(){
 
     return lines;
     
+}
+
+void save(vector<string> lines){
+
+    cout << "Enter a name for the file: ";
+    string name;
+    cin >> name;
+    
+    ofstream linesOut(name);
+
+    for(string line : lines){
+        linesOut << line << endl;
+    }
+
+    linesOut.close();
 }
